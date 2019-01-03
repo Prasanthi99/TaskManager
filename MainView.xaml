@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BarBackgroundColor="#2687DC"
+            android:TabbedPage.BarItemColor="#BBC6E8"
+            android:TabbedPage.BarSelectedItemColor="#ffffff"
+            android:TabbedPage.IsSwipePagingEnabled="False"
+            xmlns:vm="clr-namespace:TaskManager"
+            xmlns:ctrls="clr-namespace:TaskManager.Controls"
+            xmlns:views="clr-namespace:TaskManager.Views"
+            vm:ViewModelLocator.AutoWireViewModel="True"
+            x:Class="TaskManager.Views.MainView"
+            SelectedItem="{Binding SelectedTab,Mode=TwoWay}"
+            Title="Task Manager">
+    <!---->
+    <!--<ContentPage x:Name="NewTasks"  Title="New" Icon="new_task.png" >
+        <views:TasksView/>
+    </ContentPage>
+    <ContentPage x:Name="InProgressTasks"  Title="In Progress" Icon="in_progress.png">
+        <views:TasksView/>
+    </ContentPage>
+    <ContentPage x:Name="CompletedTasks" Title="Completed" Icon="completed.png">
+        <views:TasksView/>
+    </ContentPage>-->    
+</TabbedPage>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fab="clr-namespace:SuaveControls.Views;assembly=SuaveControls.FloatingActionButton"
+             xmlns:vm="clr-namespace:TaskManager"
+             Title="{Binding Title}"
+             vm:ViewModelLocator.AutoWireViewModel="True"
+             x:Class="TaskManager.Views.TasksView">   
+        <RelativeLayout>
+            <ListView ItemsSource="{Binding Tasks}" x:Name="Tasks" HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Icon="edit_task.png" Command="{Binding Path=BindingContext.EditTaskCommand, Source={x:Reference Name=Tasks}}" CommandParameter="{Binding .}"/>
+                            <MenuItem Icon="delete_task.png" Command="{Binding Path=BindingContext.DeleteTaskCommand, Source={x:Reference Name=Tasks}}" CommandParameter="{Binding .}" />
+                        </ViewCell.ContextActions>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label WidthRequest="5" BackgroundColor="{Binding Priority,Converter={StaticResource PriorityColorConverter}}"/>
+                                    <StackLayout>
+                                        <Label TextColor="Black" Margin="2" VerticalOptions="CenterAndExpand" FontSize="Medium" Text="{Binding Title}"/>
+                                        <Label TextColor="Black" VerticalOptions="CenterAndExpand" FontSize="Medium" Text="{Binding Description}"/>
+                                        <Label TextColor="Black" Margin="2" VerticalOptions="CenterAndExpand" FontSize="Medium" Text="{Binding DueDate,StringFormat='\{0:dd-MMM-yy}'}"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+            </ListView>
+            <fab:FloatingActionButton x:Name="fabBtn"  WidthRequest="80"  TextColor="White"  BackgroundColor="Transparent" ButtonColor="#03A9F4" HorizontalOptions="End" Image="add_task.png" Command="{Binding AddTaskCommand}" VerticalOptions="EndAndExpand"
+                RelativeLayout.WidthConstraint=
+                    "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                    "{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"
+                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.75}"/>
+    </RelativeLayout>
+        
+</ContentPage>
